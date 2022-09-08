@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  resources :path_to_power_constructions
+  resources :resource_generator_constructions
+  resources :trade_request_responses
+  resources :fund_request_responses
+  resources :funding_request_resources
   resources :funding_request_player_roles
   resources :funding_requests
   resources :fundings

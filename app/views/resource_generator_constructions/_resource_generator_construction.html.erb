@@ -1,0 +1,17 @@
+<div id="<%= dom_id resource_generator_construction %>">
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Construction:</strong>
+    <%= resource_generator_construction.construction_id %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Resource generator type:</strong>
+    <%= resource_generator_construction.resource_generator_type %>
+  </p>
+
+  <% if action_name != "show" %>
+    <%= link_to "Show this resource generator construction", resource_generator_construction, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to 'Edit this resource generator construction', edit_resource_generator_construction_path(resource_generator_construction), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <hr class="mt-6">
+  <% end %>
+</div>

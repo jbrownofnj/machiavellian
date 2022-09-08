@@ -1,0 +1,22 @@
+<div id="<%= dom_id fund_request_response %>">
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Funding request:</strong>
+    <%= fund_request_response.funding_request_id %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Funding request player role:</strong>
+    <%= fund_request_response.funding_request_player_role_id %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Funding request response type:</strong>
+    <%= fund_request_response.funding_request_response_type %>
+  </p>
+
+  <% if action_name != "show" %>
+    <%= link_to "Show this fund request response", fund_request_response, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to 'Edit this fund request response', edit_fund_request_response_path(fund_request_response), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <hr class="mt-6">
+  <% end %>
+</div>

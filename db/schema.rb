@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_08_172830) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_08_191232) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -22,6 +22,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_08_172830) do
     t.index ["player_id"], name: "index_constructions_on_player_id"
   end
 
+  create_table "fund_request_responses", force: :cascade do |t|
+    t.bigint "funding_request_id", null: false
+    t.bigint "funding_request_player_role_id", null: false
+    t.string "funding_request_response_type", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["funding_request_id"], name: "index_fund_request_responses_on_funding_request_id"
+    t.index ["funding_request_player_role_id"], name: "index_fund_request_responses_on_funding_request_player_role_id"
+  end
+
   create_table "funding_request_player_roles", force: :cascade do |t|
     t.bigint "player_id", null: false
     t.bigint "funding_request_id", null: false
@@ -30,6 +40,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_08_172830) do
     t.datetime "updated_at", null: false
     t.index ["funding_request_id"], name: "index_funding_request_player_roles_on_funding_request_id"
     t.index ["player_id"], name: "index_funding_request_player_roles_on_player_id"
+  end
+
+  create_table "funding_request_resources", force: :cascade do |t|
+    t.bigint "funding_request_id", null: false
+    t.string "funding_resource_type", null: false
+    t.integer "funding_resource_ammount", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["funding_request_id"], name: "index_funding_request_resources_on_funding_request_id"
   end
 
   create_table "funding_requests", force: :cascade do |t|
@@ -69,6 +88,14 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_08_172830) do
     t.integer "military_unit_power", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "path_to_power_constructions", force: :cascade do |t|
+    t.bigint "construction_id", null: false
+    t.string "path_to_power_type", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["construction_id"], name: "index_path_to_power_constructions_on_construction_id"
   end
 
   create_table "people", force: :cascade do |t|
@@ -155,6 +182,14 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_08_172830) do
     t.index ["person_id"], name: "index_players_on_person_id"
   end
 
+  create_table "resource_generator_constructions", force: :cascade do |t|
+    t.bigint "construction_id", null: false
+    t.string "resource_generator_type", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["construction_id"], name: "index_resource_generator_constructions_on_construction_id"
+  end
+
   create_table "resource_generators", force: :cascade do |t|
     t.bigint "player_id", null: false
     t.string "resource_generator_type", null: false
@@ -189,6 +224,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_08_172830) do
     t.index ["trade_request_id"], name: "index_trade_request_resources_on_trade_request_id"
   end
 
+  create_table "trade_request_responses", force: :cascade do |t|
+    t.bigint "trade_player_role_id", null: false
+    t.bigint "trade_request_id", null: false
+    t.string "trade_response_type", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["trade_player_role_id"], name: "index_trade_request_responses_on_trade_player_role_id"
+    t.index ["trade_request_id"], name: "index_trade_request_responses_on_trade_request_id"
+  end
+
   create_table "trade_requests", force: :cascade do |t|
     t.bigint "round_id", null: false
     t.datetime "created_at", null: false
@@ -197,12 +242,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_08_172830) do
   end
 
   add_foreign_key "constructions", "players"
+  add_foreign_key "fund_request_responses", "funding_request_player_roles"
+  add_foreign_key "fund_request_responses", "funding_requests"
   add_foreign_key "funding_request_player_roles", "funding_requests"
   add_foreign_key "funding_request_player_roles", "players"
+  add_foreign_key "funding_request_resources", "funding_requests"
   add_foreign_key "funding_requests", "constructions"
   add_foreign_key "funding_requests", "rounds"
   add_foreign_key "fundings", "constructions"
   add_foreign_key "matches", "games"
+  add_foreign_key "path_to_power_constructions", "constructions"
   add_foreign_key "person_game_roles", "games"
   add_foreign_key "person_game_roles", "people"
   add_foreign_key "player_actions", "players"
@@ -216,10 +265,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_08_172830) do
   add_foreign_key "player_resources", "players"
   add_foreign_key "players", "games"
   add_foreign_key "players", "people"
+  add_foreign_key "resource_generator_constructions", "constructions"
   add_foreign_key "resource_generators", "players"
   add_foreign_key "rounds", "matches"
   add_foreign_key "trade_player_roles", "players"
   add_foreign_key "trade_player_roles", "trade_request_resources"
   add_foreign_key "trade_request_resources", "trade_requests"
+  add_foreign_key "trade_request_responses", "trade_player_roles"
+  add_foreign_key "trade_request_responses", "trade_requests"
   add_foreign_key "trade_requests", "rounds"
 end

@@ -1,0 +1,22 @@
+<div id="<%= dom_id funding_request_resource %>">
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Funding request:</strong>
+    <%= funding_request_resource.funding_request_id %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Funding resource type:</strong>
+    <%= funding_request_resource.funding_resource_type %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Funding resource ammount:</strong>
+    <%= funding_request_resource.funding_resource_ammount %>
+  </p>
+
+  <% if action_name != "show" %>
+    <%= link_to "Show this funding request resource", funding_request_resource, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to 'Edit this funding request resource', edit_funding_request_resource_path(funding_request_resource), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <hr class="mt-6">
+  <% end %>
+</div>
