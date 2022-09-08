@@ -1,0 +1,12 @@
+<div id="<%= dom_id trade_request %>">
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Round:</strong>
+    <%= trade_request.round_id %>
+  </p>
+
+  <% if action_name != "show" %>
+    <%= link_to "Show this trade request", trade_request, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to 'Edit this trade request', edit_trade_request_path(trade_request), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <hr class="mt-6">
+  <% end %>
+</div>

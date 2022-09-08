@@ -1,0 +1,22 @@
+<div id="<%= dom_id player_match_role %>">
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Match:</strong>
+    <%= player_match_role.match_id %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Player:</strong>
+    <%= player_match_role.player_id %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Player match role type:</strong>
+    <%= player_match_role.player_match_role_type %>
+  </p>
+
+  <% if action_name != "show" %>
+    <%= link_to "Show this player match role", player_match_role, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to 'Edit this player match role', edit_player_match_role_path(player_match_role), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <hr class="mt-6">
+  <% end %>
+</div>

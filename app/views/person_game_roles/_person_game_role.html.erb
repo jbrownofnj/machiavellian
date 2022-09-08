@@ -1,0 +1,22 @@
+<div id="<%= dom_id person_game_role %>">
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Person:</strong>
+    <%= person_game_role.person_id %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Game:</strong>
+    <%= person_game_role.game_id %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Person game role type:</strong>
+    <%= person_game_role.person_game_role_type %>
+  </p>
+
+  <% if action_name != "show" %>
+    <%= link_to "Show this person game role", person_game_role, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to 'Edit this person game role', edit_person_game_role_path(person_game_role), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <hr class="mt-6">
+  <% end %>
+</div>

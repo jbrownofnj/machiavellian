@@ -1,0 +1,17 @@
+<div id="<%= dom_id funding_request %>">
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Round:</strong>
+    <%= funding_request.round_id %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Construction:</strong>
+    <%= funding_request.construction_id %>
+  </p>
+
+  <% if action_name != "show" %>
+    <%= link_to "Show this funding request", funding_request, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to 'Edit this funding request', edit_funding_request_path(funding_request), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <hr class="mt-6">
+  <% end %>
+</div>

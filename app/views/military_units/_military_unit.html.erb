@@ -1,0 +1,17 @@
+<div id="<%= dom_id military_unit %>">
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Military unit type:</strong>
+    <%= military_unit.military_unit_type %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Military unit power:</strong>
+    <%= military_unit.military_unit_power %>
+  </p>
+
+  <% if action_name != "show" %>
+    <%= link_to "Show this military unit", military_unit, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to 'Edit this military unit', edit_military_unit_path(military_unit), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <hr class="mt-6">
+  <% end %>
+</div>

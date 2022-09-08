@@ -1,0 +1,22 @@
+<div id="<%= dom_id trade_request_resource %>">
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Trade request:</strong>
+    <%= trade_request_resource.trade_request_id %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Trade request resource type:</strong>
+    <%= trade_request_resource.trade_request_resource_type %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Trade request resource quantity:</strong>
+    <%= trade_request_resource.trade_request_resource_quantity %>
+  </p>
+
+  <% if action_name != "show" %>
+    <%= link_to "Show this trade request resource", trade_request_resource, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to 'Edit this trade request resource', edit_trade_request_resource_path(trade_request_resource), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <hr class="mt-6">
+  <% end %>
+</div>

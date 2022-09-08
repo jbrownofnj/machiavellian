@@ -1,0 +1,22 @@
+<div id="<%= dom_id player_resource %>">
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Player:</strong>
+    <%= player_resource.player_id %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Resource quantity:</strong>
+    <%= player_resource.resource_quantity %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Resource type:</strong>
+    <%= player_resource.resource_type %>
+  </p>
+
+  <% if action_name != "show" %>
+    <%= link_to "Show this player resource", player_resource, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to 'Edit this player resource', edit_player_resource_path(player_resource), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <hr class="mt-6">
+  <% end %>
+</div>

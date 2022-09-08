@@ -1,0 +1,1 @@
+json.partial! "funding_request_player_roles/funding_request_player_role", funding_request_player_role: @funding_request_player_role

@@ -1,0 +1,12 @@
+<div id="<%= dom_id player_loyalty %>">
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Player loyalty quantity:</strong>
+    <%= player_loyalty.player_loyalty_quantity %>
+  </p>
+
+  <% if action_name != "show" %>
+    <%= link_to "Show this player loyalty", player_loyalty, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to 'Edit this player loyalty', edit_player_loyalty_path(player_loyalty), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <hr class="mt-6">
+  <% end %>
+</div>

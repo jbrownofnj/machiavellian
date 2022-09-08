@@ -1,0 +1,27 @@
+<%= form_with(model: military_unit, class: "contents") do |form| %>
+  <% if military_unit.errors.any? %>
+    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
+      <h2><%= pluralize(military_unit.errors.count, "error") %> prohibited this military_unit from being saved:</h2>
+
+      <ul>
+        <% military_unit.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="my-5">
+    <%= form.label :military_unit_type %>
+    <%= form.text_field :military_unit_type, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :military_unit_power %>
+    <%= form.number_field :military_unit_power, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <div class="inline">
+    <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+  </div>
+<% end %>

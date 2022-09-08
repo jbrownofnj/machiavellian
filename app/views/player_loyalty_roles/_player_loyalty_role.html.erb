@@ -1,0 +1,22 @@
+<div id="<%= dom_id player_loyalty_role %>">
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Player:</strong>
+    <%= player_loyalty_role.player_id %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Player loyalty:</strong>
+    <%= player_loyalty_role.player_loyalty_id %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Player loyalty role type:</strong>
+    <%= player_loyalty_role.player_loyalty_role_type %>
+  </p>
+
+  <% if action_name != "show" %>
+    <%= link_to "Show this player loyalty role", player_loyalty_role, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to 'Edit this player loyalty role', edit_player_loyalty_role_path(player_loyalty_role), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <hr class="mt-6">
+  <% end %>
+</div>

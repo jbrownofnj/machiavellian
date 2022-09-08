@@ -1,13 +1,11 @@
 import React from 'react'
 import {Routes,Route,} from "react-router-dom";
-import App from './App';
-import ControlPanel from './components/ControlPanel';
+import Terminal from "./components/Terminal.js"
+
 function Router() {
   return (
     <Routes>
-        <Route path="/controlPanel" element={<ControlPanel/>}>  
-        </Route>
-        <Route index element={<App/>}/>
+        <Route index element={<Terminal/>}/>
     </Routes>
   )
 }
