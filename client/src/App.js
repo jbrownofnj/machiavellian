@@ -1,12 +1,13 @@
 import './App.css';
 import AppHeader from "./components/AppHeader.js"
+import {Outlet} from "react-router-dom"
 
 function App() {
   return (
-    <h1 className="text-3xl font-bold underline">
-    THE APP!
-    <AppHeader/>
-  </h1>
+    <div className="container mx-auto px-1 bg-gray-400 h-screen">
+      <AppHeader/>
+      <Outlet/>
+    </div>
   );
 }
 
