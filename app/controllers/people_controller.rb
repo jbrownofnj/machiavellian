@@ -1,7 +1,11 @@
 class PeopleController < ApplicationController
   before_action :set_person, only: %i[ show edit update destroy ]
-
+  before_action :current_user, only: %i[logged_in_user]
   # GET /people or /people.json
+  def logged_in_user
+    @logged_in_user=Person.find(session[:current_user])
+    render json:@logged_in_user, serializer: PeopleSerializer
+  end
   def index
     @people = Person.all
     render json:@people
@@ -24,16 +28,11 @@ class PeopleController < ApplicationController
   # POST /people or /people.json
   def create
     @person = Person.new(person_params)
-
-    respond_to do |format|
       if @person.save
-        format.html { redirect_to person_url(@person), notice: "Person was successfully created." }
-        format.json { render :show, status: :created, location: @person }
+        render json:@person, status: :created, location: @person 
       else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @person.errors, status: :unprocessable_entity }
+        render json:({errors:"failed to create person"}), status: :unprocessable_entity
       end
-    end
   end
 
   # PATCH/PUT /people/1 or /people/1.json
@@ -67,6 +66,6 @@ class PeopleController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def person_params
-      params.require(:person).permit(:person_email, :person_password, :person_email_confirmation_token, :person_email_confirmed)
+      params.permit(:person_email,:password)
     end
 end

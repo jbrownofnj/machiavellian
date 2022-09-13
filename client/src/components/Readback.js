@@ -14,8 +14,12 @@ function Readback() {
     function submitEntitySelectFormHandler(e){
        e.preventDefault()
         console.log(e)
-        fetch(`http://127.0.0.1:3000/${entitySelectFormInput}`).then(res=>res.json()).then(result=>{
-        setReadback(result)
+        fetch(`http://127.0.0.1:3000/people`,{
+            method: "POST",
+            headers:{"Content-Type":"application/json"},
+            body:JSON.stringify({person_emal:"johnbrownsinbox@gmail.com",})
+          }).then(res=>res.json()).then(result=>{
+        console.log(result)
     })
     }
 

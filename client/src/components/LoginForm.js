@@ -1,6 +1,6 @@
 import React,{useState} from 'react'
 
-function LoginForm() {
+function LoginForm({handleUserLoggingIn}) {
 
   const [userEmail,setUserEmail]=useState("")
   const [userPassword,setUserPassword]=useState("")
@@ -9,9 +9,22 @@ function LoginForm() {
     e.preventDefault()
     fetch(`http://127.0.0.1:3000/sessions`,{
       method: "POST",
-      headers:{"Content-Type":"application/json"}
-    }).then(res=>res.json()).then(result=>{
-        console.log(result)
+      headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({user_email:userEmail, password:userPassword})
+    }).then(res=>{
+      if(res.ok){
+        res.json().then(responseObject=>{
+          if(responseObject.person_email){
+            handleUserLoggingIn(responseObject)
+          }
+          else{
+            console.log(responseObject)
+          }
+        })
+      }
+      else{
+        console.log(res)
+      }
     })
   }
   function handleUserEmailChange(e){

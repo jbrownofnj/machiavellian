@@ -25,7 +25,8 @@ Rails.application.routes.draw do
   resources :person_game_roles
   resources :games
   resources :people
-  resources :sessions
+  resources :sessions, only: [:create,:destroy]
+  get "/loggedInUser", to: "people#logged_in_user"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")

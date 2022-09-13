@@ -100,9 +100,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_08_191232) do
 
   create_table "people", force: :cascade do |t|
     t.string "person_email", null: false
-    t.string "person_password", null: false
-    t.string "person_email_confirmation_token", null: false
-    t.boolean "person_email_confirmed", null: false
+    t.string "password_digest", null: false
+    t.string "person_email_confirmation_token", default: ""
+    t.boolean "person_email_confirmed", default: false
+    t.boolean "is_admin", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
